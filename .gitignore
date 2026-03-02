@@ -1,0 +1,40 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+*.swp
+*.swo
+*~
+.Spotlight-V100
+.Trashes
+
+# IntelliJ
+.idea/
+*.iml
+*.iws
+*.ipr
+*.swp
+*.swo
+*~
+out/
+.gradle/
+build/
+target/
+
+# VS Code
+.vscode/
+
+# Node (if applicable)
+node_modules/
+npm-debug.log
+
+# Python (if applicable)
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+
+# General
+*.log
+.env

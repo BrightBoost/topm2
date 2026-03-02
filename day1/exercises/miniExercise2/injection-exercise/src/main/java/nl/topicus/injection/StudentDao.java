@@ -1,0 +1,43 @@
+package nl.topicus.injection;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
+public class StudentDao {
+
+    private final Connection connection;
+
+    public StudentDao(Connection connection) {
+        this.connection = connection;
+    }
+
+    /**
+     * Zoekt studenten op basis van e-mailadres.
+     *
+     * LET OP: deze methode is KWETSBAAR voor SQL injection!
+     * De input wordt direct in de SQL-query geplakt via string concatenation.
+     *
+     * TODO: Vervang Statement door PreparedStatement om SQL injection te voorkomen.
+     */
+    public List<String> findByEmail(String email) throws SQLException {
+        List<String> results = new ArrayList<>();
+        String sql = "SELECT * FROM students WHERE email = '" + email + "'";
+
+        System.out.println("Uitgevoerde query: " + sql);
+
+        try (Statement stmt = connection.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                results.add(rs.getLong("id") + " | " +
+                        rs.getString("name") + " | " +
+                        rs.getString("email") + " | " +
+                        rs.getInt("age"));
+            }
+        }
+        return results;
+    }
+
+    // TODO: Voeg hier een findByName(String name) methode toe die een student zoekt op naam.
+    //       Gebruik hiervoor direct een PreparedStatement.
+}
