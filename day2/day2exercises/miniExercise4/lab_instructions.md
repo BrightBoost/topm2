@@ -78,6 +78,8 @@ CREATE TABLE students (
 
 Voeg daarna een student toe.
 
+</details>
+
 ---
 
 ## Part 2: Update met versiecontrole
